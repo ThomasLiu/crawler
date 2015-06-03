@@ -1,0 +1,8 @@
+extends layout
+
+block content
+    ul
+        each data in datas
+            li
+                a(href="#{data.href}", target="_blank") #{data.title}
+                div #{data.comment1}

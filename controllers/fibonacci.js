@@ -1,12 +1,10 @@
 /**
  * Created by user on 2/6/15.
  */
-var express = require('express');
-var router = express.Router();
 var fibonacci = require('../models/fibonacci');
 
-/* GET home page. */
-router.get('/fib', function(req, res, next) {
+
+exports.index = function (req, res, next) {
     var n = req.query.n;
     if (/\d+/.test(n)) {
         var numN = Number(n);
@@ -23,7 +21,4 @@ router.get('/fib', function(req, res, next) {
             .send('n should be a Number');
     }
 
-
-});
-
-module.exports = router;
+}

@@ -1,13 +1,11 @@
-var express = require('express');
 var superagent = require('superagent');
 var cheerio = require('cheerio');
 var eventproxy = require('eventproxy');
 var url = require("url");
 var debug = require('debug')('crawler:server');
-var router = express.Router();
 
 /* GET crawler listing. */
-router.get('/', function (req, res, next) {
+exports.index = function (req, res, next) {
     var cnodeUrl = 'https://cnodejs.org/';
     superagent.get(cnodeUrl)
         .end(function (err, sres) {
@@ -53,11 +51,11 @@ router.get('/', function (req, res, next) {
             });
 
         });
-});
+}
 
 var async = require('async');
 
-router.get('/async', function (req, res, next) {
+exports.async = function (req, res, next) {
     var cnodeUrl = 'https://cnodejs.org/';
     superagent.get(cnodeUrl)
         .end(function (err, sres) {
@@ -119,9 +117,8 @@ router.get('/async', function (req, res, next) {
             });
         });
 
-});
+}
 
 
 
 
-module.exports = router;

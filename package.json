@@ -14,11 +14,14 @@
     "debug": "~2.1.1",
     "eventproxy": "^0.3.3",
     "express": "~4.12.2",
+    "ioredis": "^1.4.0",
     "jade": "~1.9.2",
     "less-middleware": "1.0.x",
+    "lodash": "^3.9.3",
     "morgan": "~1.5.1",
     "serve-favicon": "~2.2.0",
-    "superagent": "^1.2.0"
+    "superagent": "^1.2.0",
+    "xmlbuilder": "^2.6.4"
   },
   "devDependencies": {
     "istanbul": "^0.3.14",

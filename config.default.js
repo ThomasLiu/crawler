@@ -38,6 +38,9 @@ var config = {
     redis_port: 6379,
     redis_db: 0,
 
+    session_secret: 'node_login_secret', // 务必修改
+    auth_cookie_name: 'node_login',
+
     // 程序运行的端口
     port: 3000,
 

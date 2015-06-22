@@ -7,8 +7,10 @@
  */
 var express          = require('express');
 var site             = require('./controllers/site');
+var sign             = require('./controllers/sign');
 var fibonacci        = require('./controllers/fibonacci');
 var crawler          = require('./controllers/crawler');
+var config           = require('./config');
 
 var router           = express.Router();
 
@@ -17,6 +19,12 @@ var router           = express.Router();
 router.get('/', site.index);
 // sitemap
 router.get('/sitemap.xml', site.sitemap);
+
+if (config.allow_sign_up) {
+    router.get('/signup', sign.showSignup); // 跳转到注册界面
+    router.post('/signup', sign.signup);  // 提交注册信息
+}
+
 
 // fibonacci
 router.get('/fibonacci/fib', fibonacci.index);

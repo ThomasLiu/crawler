@@ -19,7 +19,21 @@ exports.sitemap = function (req, res, next){
     ep.fail(next);
 
     ep.all('sitemap', function (sitemap) {
-       res.type('xml');
+        res.type('xml');
         res.send(sitemap);
     });
+
+    cache.get('sitemap', ep.done(function (sitemapData){
+        if (sitemapData) {
+            ep.emit('sitemap', sitemapData);
+        } else {
+            //将需要给搜索引擎搜索到的网址都加入urlset
+            urlset.ele('url').ele('loc','http://');
+
+            var sitemapData = urlset.end();
+
+            cache.set('sitemap', sitemapData, 3600 * 24);
+            ep.emit('sitemap', sitemapData);
+        }
+    }));
 }
